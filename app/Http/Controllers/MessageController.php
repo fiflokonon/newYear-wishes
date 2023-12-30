@@ -13,8 +13,8 @@ class MessageController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'message' => 'required|string',
-            'access_code' => $request->input('visibility') == 'only me' ? 'required|string' : 'nullable|string',
-            'visibility' => 'required|string|in:all,only me',
+            'access_code' => $request->input('visibility') == 'only user' ? 'required|string' : 'nullable|string',
+            'visibility' => 'required|string|in:all,only user',
         ]);
         // Si la validation échoue, renvoyez les erreurs au format JSON
         if ($validator->fails()) {

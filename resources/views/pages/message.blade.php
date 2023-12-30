@@ -37,7 +37,6 @@
             font-family: 'Open Sans', sans-serif;
             font-weight: 300;
             font-size: 16px;
-            color: #fff;
         }
 
         @font-face {
@@ -571,7 +570,7 @@
         </div>
         <div class="modal-body">
             <div id="successMessage" style="display: none;">
-                <div style="color: green; margin: 5px;">Réponse envoyée avec succès!</div>
+                <div style="color: green !important; background-color: black">Réponse envoyée avec succès!</div>
                 <button onclick="redirectToHome()">Créer votre lien</button>
             </div>
             <form id="messageForm">

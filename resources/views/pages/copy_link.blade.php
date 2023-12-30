@@ -14,20 +14,11 @@ $currentProtocol = request()->secure() ? 'https://' : 'http://';
             padding: 0;
             background-color: transparent;
             color: whitesmoke;
-            background-image: url("/assets/images/new-year.jpg");
+            background-image: url("/assets/images/background.jpeg");
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
         }
-
-        @media (max-width: 768px) {
-            body {
-                margin-bottom: 0;
-                background-repeat: no-repeat;
-                background-size: cover;
-            }
-        }
-
 
         main {
             max-width: 800px;
@@ -107,8 +98,8 @@ $currentProtocol = request()->secure() ? 'https://' : 'http://';
 <body>
 
 <main>
-    <p>Un peu de texte en haut de la page.</p>
-
+    <h1 style="color: red">Votre message a été enregistré avec succès ! </h1>
+    <p> Cliquez sur le bouton </p>
     <div class="link-container">
         <div class="link-box" id="linkBox">{{ $currentProtocol }}{{ request()->getHttpHost()  }}/messages/{{ $message->link }}</div>
         <button id="copyLinkButton" onclick="copyToClipboard()">Copier</button>
