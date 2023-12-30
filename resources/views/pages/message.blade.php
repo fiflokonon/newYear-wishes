@@ -541,7 +541,7 @@
         En cette occasion spéciale du nouvel an 2024, {{$message->name}}  a pensé à vous! Voici son message!
     </p>
     <div id="wish">
-        <div style="background-color: #d50606; color: whitesmoke; border-radius: 5px; margin: 5px;">
+        <div style="background-color: #811414; color: whitesmoke; border-radius: 5px; margin: 5px; font-family: Grand Hotel, 'cursive'">
             {{ $message->message}}
         </div>
     </div>
