@@ -419,7 +419,7 @@ $currentProtocol = request()->secure() ? 'https://' : 'http://';
     <div id="thankYouBlock" style="display: none;">
         <div style="font-family: Grand Hotel, 'serif'">
             <!-- Message de remerciements -->
-            <h1 class="mt-3">Merci de vous être abonné !</h1>
+            <h1 style="font-family: Grand Hotel, 'cursive'; color: green; ">Merci de vous être abonné !</h1>
             <p class="lead">Vous êtes maintenant abonné à notre newsletter. Restez à l'écoute pour les dernières mises à jour.</p>
         </div>
     </div>
@@ -575,7 +575,7 @@ $currentProtocol = request()->secure() ? 'https://' : 'http://';
                 };
                 $.ajax({
                     type: 'POST',
-                    url: 'https://christmas.fifonsi.net/newsletter/subscription',
+                    url: '/newsletter/subscription',
                     data: {
                         _token: '{{ csrf_token() }}',
                         email: formData.email
@@ -592,7 +592,8 @@ $currentProtocol = request()->secure() ? 'https://' : 'http://';
                 });
             });
             function showThankYouBlock() {
-                $('#thankYouBlock').style.display = 'flex';
+                var thb = document.getElementById('thankYouBlock');
+                thb.style.display = 'flex';
             }
         });
     });

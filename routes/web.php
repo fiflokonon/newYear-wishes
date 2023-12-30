@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,3 +36,4 @@ Route::get('/messages/{link}', [MessageController::class, 'getMessageByLink'])->
 Route::get('/messages/{id}/link', [MessageController::class, 'messageLink'])->name('message_link');
 Route::post('/new-message', [MessageController::class, 'new_message'])->name('new_message');
 Route::post('/add-answer', [AnswerController::class, 'addAnswer'])->name('add_answer');
+Route::post('/newsletter/subscription', [SubscriptionController::class, 'new_subscription'])->name('add_subscription');
