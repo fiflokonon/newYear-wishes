@@ -21,11 +21,11 @@
 </head>
 <body>
 <h1>BONNE ET HEUREUSE ANNÉE À VOUS !</h1>
-<!--<div class="container-fluid position-relative justify-content-center text-center" style="top: 120px; font-family: Grand Hotel, 'serif'">
+<div class="container-fluid position-relative justify-content-center text-center" style="top: 120px; font-family: Grand Hotel, 'serif'">
     <p>Envoyez un petit message pour souhaiter les meilleurs voeux à vos amis et proches !</p>
     <p class="text-success">Faites-leur savoir que vous pensez à eux !</p>
     <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Rédiger votre message</button>
-</div>-->
+</div>
 <div class="fireworks">
     <div class="firework">
         <div class="explosion">
