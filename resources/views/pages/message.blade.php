@@ -76,7 +76,7 @@
 <!-- Greeting container -->
 <div id="greeting-container" class="container-fluid">
     <div id="message">
-        En cette occasion spéciale du nouvel an, <span class="text-danger">{{ $message->name }}</span> a un message pour vous!
+        En cette occasion spéciale du nouvel an, <span class="text-light fw-bolder" style="font-weight: bolder!important; background-color: red">{{ $message->name }}</span> a un message pour vous!
         <div class="message-container">
             {{ $message->message }}
         </div>
