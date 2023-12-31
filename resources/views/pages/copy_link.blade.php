@@ -428,7 +428,7 @@ $currentProtocol = request()->secure() ? 'https://' : 'http://';
     </div>
 </main>
 
-{{--
+{{-- --}}
 <div class="pg-footer">
     <footer class="footer">
         <svg class="footer-wave-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 100"
@@ -520,7 +520,7 @@ $currentProtocol = request()->secure() ? 'https://' : 'http://';
                     <h2 class="footer-call-to-action-title"> Appelez-nous !</h2>
                     <p class="footer-call-to-action-link-wrapper"><a class="footer-call-to-action-link"
                                                                      href="tel:0124-64XXXX" target="_self"> +229
-                        68947612 </a></p>
+                            68947612 </a></p>
                 </div>
             </div>
             <div class="footer-social-links">
@@ -569,7 +569,6 @@ $currentProtocol = request()->secure() ? 'https://' : 'http://';
         </div>
     </footer>
 </div>
----}}
 
 <script>
     function copyToClipboard() {
