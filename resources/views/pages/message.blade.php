@@ -521,7 +521,6 @@
 
     </style>
 </head>
-<body>
 <canvas id="canvas">Canvas is not supported in your browser.</canvas>
 <canvas id="canvas">Canvas is not supported in your browser.</canvas>
 <script type="text/javascript" src="/assets/js/message.js"></script>
