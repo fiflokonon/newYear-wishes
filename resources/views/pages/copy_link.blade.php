@@ -404,10 +404,10 @@ $currentProtocol = request()->secure() ? 'https://' : 'http://';
 <body>
 
 <main>
-    <h1 style="color: red; font-family: Grand Hotel, 'cursive'">Votre message a été enregistré avec succès ! </h1>
+    <h1 style="color: lightgray; font-family: Grand Hotel, 'cursive'">Votre message a été enregistré avec succès ! </h1>
     <p> Cliquez sur le bouton <strong>copier</strong> pour copier le lien !</p>
     <p style="color: white; font-family: Grand Hotel, 'cursive'; font-size: 20px;"> Partagez-le sur vos réseaux sociaux !</p>
-    <p style="color: green; font-family: Grand Hotel, 'cursive'; font-size: 20px; margin-bottom: 5px;">Partagez-le avec vos amis ! </p>
+    <p style="color: white; font-family: Grand Hotel, 'cursive'; font-size: 20px; margin-bottom: 5px;">Partagez-le avec vos amis ! </p>
     <div class="link-container">
         <div class="link-box" id="linkBox">{{ $currentProtocol }}{{ request()->getHttpHost()  }}/messages/{{ $message->link }}</div>
         <button id="copyLinkButton" onclick="copyToClipboard()">Copier</button>
