@@ -30,6 +30,7 @@ $currentProtocol = request()->secure() ? 'https://' : 'http://';
             display: flex;
             gap: 10px;
             margin-bottom: 20px;
+            overflow-x: auto; /* Activer le défilement horizontal si nécessaire */
         }
 
         .link-box {
@@ -38,6 +39,10 @@ $currentProtocol = request()->secure() ? 'https://' : 'http://';
             color: white;
             border: 1px solid #ced4da;
             border-radius: 4px;
+            max-width: 300px; /* Ajoutez une largeur maximale selon vos besoins */
+            overflow: hidden;
+            text-overflow: ellipsis; /* Afficher des points de suspension pour les textes dépassant la largeur */
+            white-space: nowrap; /* Empêcher le retour à la ligne du texte */
         }
 
         #copyLinkButton {
