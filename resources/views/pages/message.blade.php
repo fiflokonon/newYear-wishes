@@ -53,8 +53,8 @@
             border: none;
             cursor: pointer;
             border-radius: 5px;
-            font-family: 'cursive-font', cursive;
-            font-size: 18px;
+            font-family: 'Grand Hotel','serif';
+            font-size: 15px;
         }
 
         .message-container {
