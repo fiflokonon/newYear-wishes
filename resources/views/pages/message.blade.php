@@ -126,7 +126,7 @@
 </div>
 
 <!-- Modal pour la visibilité restreinte -->
-<div class="modal fade" id="visibilityModal" tabindex="-1" aria-labelledby="visibilityModalLabel" aria-hidden="true">
+<div class="modal fade text-dark" id="visibilityModal" tabindex="-1" aria-labelledby="visibilityModalLabel" aria-hidden="true" style="font-family: Grand Hotel, 'serif'">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
