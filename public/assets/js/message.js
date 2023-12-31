@@ -1,275 +1,207 @@
-// when animating on canvas, it is best to use requestAnimationFrame instead of setTimeout or setInterval
-// not supported in all browsers though and sometimes needs a prefix, so we need a shim
-window.requestAnimFrame = ( function() {
-    return window.requestAnimationFrame ||
-        window.webkitRequestAnimationFrame ||
-        window.mozRequestAnimationFrame ||
-        function( callback ) {
-            window.setTimeout( callback, 1000 / 60 );
-        };
-})();
+// Countdown timer code
 
-// now we will setup our basic variables for the demo
-var canvas = document.getElementById( 'canvas' ),
-    ctx = canvas.getContext( '2d' ),
-    // full screen dimensions
-    cw = window.innerWidth,
-    ch = window.innerHeight,
-    // firework collection
-    fireworks = [],
-    // particle collection
-    particles = [],
-    // starting hue
-    hue = 120,
-    // when launching fireworks with a click, too many get launched at once without a limiter, one launch per 5 loop ticks
-    limiterTotal = 5,
-    limiterTick = 0,
-    // this will time the auto launches of fireworks, one launch per 80 loop ticks
-    timerTotal = 20,
-    timerTick = 0,
-    mousedown = false,
-    // mouse x coordinate,
-    mx,
-    // mouse y coordinate
-    my;
-
-// set canvas dimensions
-canvas.width = cw;
-canvas.height = ch;
-
-// now we are going to setup our function placeholders for the entire demo
-
-// get a random number within a range
-function random( min, max ) {
-    return Math.random() * ( max - min ) + min;
-}
-
-// calculate the distance between two points
-function calculateDistance( p1x, p1y, p2x, p2y ) {
-    var xDistance = p1x - p2x,
-        yDistance = p1y - p2y;
-    return Math.sqrt( Math.pow( xDistance, 2 ) + Math.pow( yDistance, 2 ) );
-}
-
-// create firework
-function Firework( sx, sy, tx, ty ) {
-    // actual coordinates
-    this.x = sx;
-    this.y = sy;
-    // starting coordinates
-    this.sx = sx;
-    this.sy = sy;
-    // target coordinates
-    this.tx = tx;
-    this.ty = ty;
-    // distance from starting point to target
-    this.distanceToTarget = calculateDistance( sx, sy, tx, ty );
-    this.distanceTraveled = 0;
-    // track the past coordinates of each firework to create a trail effect, increase the coordinate count to create more prominent trails
-    this.coordinates = [];
-    this.coordinateCount = 5;
-    // populate initial coordinate collection with the current coordinates
-    while( this.coordinateCount-- ) {
-        this.coordinates.push( [ this.x, this.y ] );
+let newSecond1,
+    newSecond2,
+    newMinute1,
+    newMinute2,
+    newHour1,
+    newHour2,
+    newDay1,
+    newDay2 = 0;
+let lastSecond1,
+    lastSecond2,
+    lastMinute1,
+    lastMinute2,
+    lastHour1,
+    lastHour2,
+    lastDay1,
+    lastDay2 = 0;
+const countdownDiv = document.querySelector(".countdown");
+const newYearDate = new Date("31 Dec, 2023, 23:59:59");
+const currentDate = new Date();
+const milliDiff = newYearDate.getTime() - currentDate.getTime();
+const countDown = () => {
+    const newYearDate = new Date("31 Dec, 2023, 23:59:59");
+    const currentDate = new Date();
+    const milliDiff = newYearDate.getTime() - currentDate.getTime();
+    const totalSeconds = Math.floor(milliDiff / 1000);
+    const totalMinutes = Math.floor(totalSeconds / 60);
+    totalHours = Math.floor(totalMinutes / 60);
+    remSeconds = totalSeconds % 60;
+    remMinutes = totalMinutes % 60;
+    const remDays = Math.floor(totalHours / 24);
+    const remHours = totalHours % 24;
+    if (remMinutes < 10) {
+        remMinutes = "0" + remMinutes;
     }
-    this.angle = Math.atan2( ty - sy, tx - sx );
-    this.speed = 10;
-    this.acceleration = 1.05;
-    this.brightness = random( 50, 70 );
-    // circle target indicator radius
-    this.targetRadius = 1;
-}
-
-// update firework
-Firework.prototype.update = function( index ) {
-    // remove last item in coordinates array
-    this.coordinates.pop();
-    // add current coordinates to the start of the array
-    this.coordinates.unshift( [ this.x, this.y ] );
-
-    // cycle the circle target indicator radius
-    if( this.targetRadius < 8 ) {
-        this.targetRadius += 0.3;
-    } else {
-        this.targetRadius = 1;
+    if (remSeconds < 10) {
+        remSeconds = "0" + remSeconds;
     }
-
-    // speed up the firework
-    this.speed *= this.acceleration;
-
-    // get the current velocities based on angle and speed
-    var vx = Math.cos( this.angle ) * this.speed,
-        vy = Math.sin( this.angle ) * this.speed;
-    // how far will the firework have traveled with velocities applied?
-    this.distanceTraveled = calculateDistance( this.sx, this.sy, this.x + vx, this.y + vy );
-
-    // if the distance traveled, including velocities, is greater than the initial distance to the target, then the target has been reached
-    if( this.distanceTraveled >= this.distanceToTarget ) {
-        createParticles( this.tx, this.ty );
-        // remove the firework, use the index passed into the update function to determine which to remove
-        fireworks.splice( index, 1 );
-    } else {
-        // target not reached, keep traveling
-        this.x += vx;
-        this.y += vy;
+    if (totalHours < 10) {
+        totalHours = "0" + totalHours;
     }
-}
+// countdownDiv.innerHTML =
+    `<h1 class="heading">Time Remaining: ${remDays}d :
+		${remHours}h : ${remMinutes}m : ${remSeconds}s</h1>`;
+// document.getElementById("hour1").innerHTML =
+    Math.floor(remHours/ 10);
+// console.log(document.getElementById("hour1"))
+    newSecond2 = Math.floor(remSeconds % 10);
+    newSecond1 = second1.innerText = Math.floor(remSeconds / 10);
+    newMinute1 = Math.floor(remMinutes / 10);
+    newMinute2 = Math.floor(remMinutes % 10);
+    newHour1 = Math.floor(remHours / 10);
+    newHour2 = Math.floor(remHours % 10);
+    newDay1 = Math.floor(remDays / 10);
+    newDay2 = Math.floor(remDays % 10);
 
-// draw firework
-Firework.prototype.draw = function() {
-    ctx.beginPath();
-    // move to the last tracked coordinate in the set, then draw a line to the current x and y
-    ctx.moveTo( this.coordinates[ this.coordinates.length - 1][ 0 ], this.coordinates[ this.coordinates.length - 1][ 1 ] );
-    ctx.lineTo( this.x, this.y );
-    ctx.strokeStyle = 'hsl(' + hue + ', 100%, ' + this.brightness + '%)';
-    ctx.stroke();
+    slideDigit("day1", newDay1, lastDay1);
+    slideDigit("day2", newDay2, lastDay2);
+    slideDigit("hour1", newHour1, lastHour1);
+    slideDigit("hour2", newHour2, lastHour2);
+    slideDigit("minute1", newMinute1, lastMinute1);
+    slideDigit("minute2", newMinute2, lastMinute2);
+    slideDigit("second1", newSecond1, lastSecond1);
+    slideDigit("second2", newSecond2, lastSecond2);
+    setTimeout(() => {
+        second2.innerText = lastSecond2 = newSecond2;
+        second1.innerText = lastSecond1 = newSecond1;
+        minute2.innerText = lastMinute2 = newMinute2;
+        minute1.innerText = lastMinute1 = newMinute1;
+        hour2.innerText = lastHour2 = newHour2;
+        hour1.innerText = lastHour1 = newHour1;
+        day2.innerText = lastDay2 = newDay2;
+        day1.innerText = lastDay1 = newDay1;
+    }, 500);
+};
+let myInterval = setInterval(countDown, 1000);
 
-    ctx.beginPath();
-    // draw the target for this firework with a pulsing circle
-    ctx.arc( this.tx, this.ty, this.targetRadius, 0, Math.PI * 2 );
-    ctx.stroke();
-}
+// Replacing countdown time to current time
+setTimeout(() => {
+    clearInterval(myInterval);
+    setInterval(newTimer, 1000);
+    startFiringConfetti();
+}, milliDiff);
 
-// create particle
-function Particle( x, y ) {
-    this.x = x;
-    this.y = y;
-    // track the past coordinates of each particle to create a trail effect, increase the coordinate count to create more prominent trails
-    this.coordinates = [];
-    this.coordinateCount = 5;
-    while( this.coordinateCount-- ) {
-        this.coordinates.push( [ this.x, this.y ] );
+const newTimer = () => {
+    const newCurrentDate = new Date();
+    let hours = newCurrentDate.getHours();
+    let minutes = newCurrentDate.getMinutes();
+    let seconds = newCurrentDate.getSeconds();
+
+    if (seconds < 10) {
+        seconds = "0" + seconds;
     }
-    // set a random angle in all possible directions, in radians
-    this.angle = random( 0, Math.PI * 2 );
-    this.speed = random( 1, 10 );
-    // friction will slow the particle down
-    this.friction = 0.95;
-    // gravity will be applied and pull the particle down
-    this.gravity = 1;
-    // set the hue to a random number +-50 of the overall hue variable
-    this.hue = random( hue - 50, hue + 50 );
-    this.brightness = random( 50, 80 );
-    this.alpha = 1;
-    // set how fast the particle fades out
-    this.decay = random( 0.015, 0.02 );
-}
-
-// update particle
-Particle.prototype.update = function( index ) {
-    // remove last item in coordinates array
-    this.coordinates.pop();
-    // add current coordinates to the start of the array
-    this.coordinates.unshift( [ this.x, this.y ] );
-    // slow down the particle
-    this.speed *= this.friction;
-    // apply velocity
-    this.x += Math.cos( this.angle ) * this.speed;
-    this.y += Math.sin( this.angle ) * this.speed + this.gravity;
-    // fade out the particle
-    this.alpha -= this.decay;
-
-    // remove the particle once the alpha is low enough, based on the passed in index
-    if( this.alpha <= this.decay ) {
-        particles.splice( index, 1 );
+    if (minutes < 10) {
+        minutes = "0" + minutes;
     }
-}
-
-// draw particle
-Particle.prototype.draw = function() {
-    ctx. beginPath();
-    // move to the last tracked coordinates in the set, then draw a line to the current x and y
-    ctx.moveTo( this.coordinates[ this.coordinates.length - 1 ][ 0 ], this.coordinates[ this.coordinates.length - 1 ][ 1 ] );
-    ctx.lineTo( this.x, this.y );
-    ctx.strokeStyle = 'hsla(' + this.hue + ', 100%, ' + this.brightness + '%, ' + this.alpha + ')';
-    ctx.stroke();
-}
-
-// create particle group/explosion
-function createParticles( x, y ) {
-    // increase the particle count for a bigger explosion, beware of the canvas performance hit with the increased particles though
-    var particleCount = 400;
-    while( particleCount-- ) {
-        particles.push( new Particle( x, y ) );
+    if (hours < 10) {
+        hours = "0" + hours;
     }
-}
+// countdownDiv.innerHTML =
+    `<h1 class="heading">CountDown: ${hours} : ${minutes} : ${seconds}</h1>`;
+};
 
-// main demo loop
-function loop() {
-    // this function will run endlessly with requestAnimationFrame
-    requestAnimFrame( loop );
+function startFiringConfetti() {
+    const canvas = document.getElementById("confettiHTMLCanvas");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-    // increase the hue to get different colored fireworks over time
-    //hue += 0.5;
+    const ctx = canvas.getContext("2d");
 
-    // create random color
-    hue= random(0, 360 );
+    const pieces = [];
+    const numberOfPieces = 200;
+    const colors = ["#f00", "#0f0", "#00f", "#ff0", "#0ff"];
 
-    // normally, clearRect() would be used to clear the canvas
-    // we want to create a trailing effect though
-    // setting the composite operation to destination-out will allow us to clear the canvas at a specific opacity, rather than wiping it entirely
-    ctx.globalCompositeOperation = 'destination-out';
-    // decrease the alpha property to create more prominent trails
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
-    ctx.fillRect( 0, 0, cw, ch );
-    // change the composite operation back to our main mode
-    // lighter creates bright highlight points as the fireworks and particles overlap each other
-    ctx.globalCompositeOperation = 'lighter';
-
-    // loop over each firework, draw it, update it
-    var i = fireworks.length;
-    while( i-- ) {
-        fireworks[ i ].draw();
-        fireworks[ i ].update( i );
+    function newPiece() {
+        this.x = canvas.width * Math.random();
+        this.y = canvas.height * Math.random() - canvas.height;
+        this.rotation = Math.random() * 360;
+        this.color =
+            colors[Math.floor(Math.random() * colors.length)];
+        this.diameter = Math.random() * 10 + 5;
+        this.speed = this.diameter / 2;
+        this.rise = 0;
+        this.angle = 0;
     }
 
-    // loop over each particle, draw it, update it
-    var i = particles.length;
-    while( i-- ) {
-        particles[ i ].draw();
-        particles[ i ].update( i );
+    for (let i = 0; i < numberOfPieces; i++) {
+        pieces.push(new newPiece());
     }
 
-    // launch fireworks automatically to random coordinates, when the mouse isn't down
-    if( timerTick >= timerTotal ) {
-        if( !mousedown ) {
-            // start the firework at the bottom middle of the screen, then set the random target coordinates, the random y coordinates will be set within the range of the top half of the screen
-            fireworks.push( new Firework( cw / 2, ch, random( 0, cw ), random( 0, ch / 2 ) ) );
-            timerTick = 0;
+    function updateNewPiece(piece) {
+        piece.rotation += 0.5;
+        piece.angle += 0.01;
+        piece.rise += 0.5;
+        piece.y -= piece.speed;
+        piece.x += Math.sin(piece.angle) - 0.5 + Math.random();
+
+        if (piece.y <= -20) {
+            piece.y = canvas.height + 20;
+            piece.x = Math.random() * canvas.width;
         }
-    } else {
-        timerTick++;
     }
 
-    // limit the rate at which fireworks get launched when mouse is down
-    if( limiterTick >= limiterTotal ) {
-        if( mousedown ) {
-            // start the firework at the bottom middle of the screen, then set the current mouse coordinates as the target
-            fireworks.push( new Firework( cw / 2, ch, mx, my ) );
-            limiterTick = 0;
-        }
-    } else {
-        limiterTick++;
+    function drawNewPiece(piece) {
+        ctx.beginPath();
+        ctx.lineWidth = piece.diameter;
+        ctx.strokeStyle = piece.color;
+        ctx.moveTo(piece.x + piece.diameter / 4, piece.y);
+        ctx.lineTo(piece.x, piece.y + piece.diameter / 4);
+        ctx.stroke();
+        ctx.closePath();
     }
+
+    function animateConfetti() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        pieces.forEach((piece) => {
+            updateNewPiece(piece);
+            drawNewPiece(piece);
+        });
+
+        requestAnimationFrame(animateConfetti);
+    }
+
+    animateConfetti();
 }
 
-// mouse event bindings
-// update the mouse coordinates on mousemove
-canvas.addEventListener( 'mousemove', function( e ) {
-    mx = e.pageX - canvas.offsetLeft;
-    my = e.pageY - canvas.offsetTop;
-});
+const bulb1 = document.querySelector(".bulb1");
+const bulb2 = document.querySelector(".bulb2");
+const bulb3 = document.querySelector(".bulb3");
+const bulb4 = document.querySelector(".bulb4");
+const blinkBulb1 = () => {
+    bulb1.classList.toggle("bulb1");
+};
+setInterval(blinkBulb1, 500);
 
-// toggle mousedown state and prevent canvas from being selected
-canvas.addEventListener( 'mousedown', function( e ) {
-    e.preventDefault();
-    mousedown = true;
-});
+const blinkBulb2 = () => {
+    bulb2.classList.toggle("bulb2");
+};
+setInterval(blinkBulb2, 800);
 
-canvas.addEventListener( 'mouseup', function( e ) {
-    e.preventDefault();
-    mousedown = false;
-});
+const blinkBulb3 = () => {
+    bulb3.classList.toggle("bulb3");
+};
+setInterval(blinkBulb3, 300);
 
-// once the window loads, we are ready for some fireworks!
-window.onload = loop;
+const blinkBulb4 = () => {
+    bulb4.classList.toggle("bulb4");
+};
+setInterval(blinkBulb4, 400);
+
+function slideDigit(id, value, lastValue) {
+    console.log("slide");
+    const digit = document.getElementById(id);
+    if (value !== lastValue) {
+        digit.style.transform = "translateY(-100%)"; // Move digit upwards
+        digit.style.opacity = "0"; // Fade out current digit
+
+        setTimeout(() => {
+            digit.style.transform = "translateY(0)";
+            // Slide back to original position
+            digit.textContent = value; // Set new digit value
+            digit.style.opacity = "1"; // Fade in new digit
+        }, 300); // Adjust this timeout as needed
+    }
+}

@@ -18,4 +18,9 @@ class Message extends Model
         'link',
         'status'
     ];
+
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
 }

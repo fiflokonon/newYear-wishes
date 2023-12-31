@@ -15,4 +15,9 @@ class Answer extends Model
       'content',
       'status'
     ];
+
+    public function message()
+    {
+        return $this->belongsTo(Message::class);
+    }
 }

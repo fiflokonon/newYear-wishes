@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Answer;
+use App\Models\Message;
 use Illuminate\Http\Request;
 
 class AnswerController extends Controller
@@ -28,5 +29,15 @@ class AnswerController extends Controller
 
         // Vous pouvez renvoyer une réponse JSON ou toute autre logique nécessaire
         return response()->json(['success' => true, 'message' => 'Réponse ajoutée avec succès']);
+    }
+
+    public function messageAnswers($id)
+    {
+        $message = Message::find($id);
+        if ($message){
+            return view('pages.answers', ['message' => $message]);
+        }else{
+            return redirect()->route('not_found');
+        }
     }
 }

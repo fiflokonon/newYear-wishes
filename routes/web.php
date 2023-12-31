@@ -37,3 +37,4 @@ Route::get('/messages/{id}/link', [MessageController::class, 'messageLink'])->na
 Route::post('/new-message', [MessageController::class, 'new_message'])->name('new_message');
 Route::post('/add-answer', [AnswerController::class, 'addAnswer'])->name('add_answer');
 Route::post('/newsletter/subscription', [SubscriptionController::class, 'new_subscription'])->name('add_subscription');
+Route::get('/messages/{id}/answers', [AnswerController::class, 'messageAnswers'])->name('answers');

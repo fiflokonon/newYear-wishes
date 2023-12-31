@@ -11,7 +11,7 @@
 <body>
 <nav class="navbar navbar-expand-sm navbar-dark">
     <img src="https://i.imgur.com/CFpa3nK.jpg" width="20" height="20" class="d-inline-block align-top rounded-circle" alt="">
-    <a class="navbar-brand ml-2" href="#" data-abc="true">Rib Simpson</a>
+    <a class="navbar-brand ml-2" href="#" data-abc="true">{{ $message->name }}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -32,41 +32,19 @@
         <div class="row">
             <div class="col-sm-5 col-md-6 col-12 pb-4">
                 <h1>Réponses</h1>
-                <div class="comment mt-4 text-justify float-left">
+                @foreach($message->answers as $key => $answer)
+                    @if($key % 2 == 0)
+                        <div class="comment mt-4 text-justify float-left">
+                            @else
+                                <div class="darker mt-4 text-justify float-left">
+                                    @endif
                     <img src="https://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle" width="40" height="40">
-                    <h4>Jhon Doe</h4>
-                    <span>- 20 October, 2018</span>
+                    <h4>{{ $answer->name }}</h4>
+                    <span>- {{ \Carbon\Carbon::parse($answer->created_at)->formatLocalized('%d-%m-%Y à %H:%M') }}</span>
                     <br>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic aliquam vero sequi velit molestias doloremque molestiae dicta?</p>
+                    <p>{{ $answer->content }}</p>
                 </div>
-                <div class="text-justify darker mt-4 float-right">
-                    <img src="https://i.imgur.com/CFpa3nK.jpg" alt="" class="rounded-circle" width="40" height="40">
-                    <h4>Rob Simpson</h4>
-                    <span>- 20 October, 2018</span>
-                    <br>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic aliquam vero sequi velit molestias doloremque molestiae dicta?</p>
-                </div>
-                <div class="comment mt-4 text-justify">
-                    <img src="https://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle" width="40" height="40">
-                    <h4>Jhon Doe</h4>
-                    <span>- 20 October, 2018</span>
-                    <br>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic aliquam vero sequi velit molestias doloremque molestiae dicta?</p>
-                </div>
-                <div class="darker mt-4 text-justify">
-                    <img src="https://i.imgur.com/CFpa3nK.jpg" alt="" class="rounded-circle" width="40" height="40">
-                    <h4>Rob Simpson</h4>
-                    <span>- 20 October, 2018</span>
-                    <br>
-                    <p >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic aliquam vero sequi velit molestias doloremque molestiae dicta?</p>
-                </div>
-                <div class="comment mt-4 text-justify float-left">
-                    <img src="https://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle" width="40" height="40">
-                    <h4>Jhon Doe</h4>
-                    <span>- 20 October, 2018</span>
-                    <br>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic aliquam vero sequi velit molestias doloremque molestiae dicta?</p>
-                </div>
+                @endforeach
             </div>
 
             <div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
