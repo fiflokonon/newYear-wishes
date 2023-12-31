@@ -131,6 +131,7 @@
             <div class="spark silver"></div>
         </div>
     </div>
+    {{--
     <div class="firework">
         <div class="explosion">
             <div class="spark gold"></div>
@@ -205,7 +206,7 @@
         <div class="explosion">
             <div class="spark gold"></div>
         </div>
-    </div>
+    </div>--}}
 </div>
 <!-- Button trigger modal -->
 <!--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
