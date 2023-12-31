@@ -14,6 +14,8 @@
     <!--<link rel="stylesheet" href="/assets/css/new.css">-->
     <!-- Inclusion locale des fichiers Bootstrap -->
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fireworks-js/dist/fireworks.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -22,10 +24,8 @@
         body {
             margin: 0;
             overflow: hidden;
-            background:
-                linear-gradient(#0007, #0000),
-                #123;
             color: white;
+            background: #123 linear-gradient(#0007, #0000) no-repeat;
         }
         #fireworks {
             position: fixed;
@@ -43,7 +43,7 @@
 <div class="container-fluid position-relative justify-content-center text-center" style="top: 60px; font-family: Grand Hotel, 'serif'">
     <p>Envoyez un petit message pour souhaiter les meilleurs voeux à vos amis et proches !</p>
     <p class="text-success">Faites-leur savoir que vous pensez à eux !</p>
-    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Rédiger votre message</button>
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Rédiger votre message</button>
 </div>
 <!-- Fireworks animation -->
 <div id="fireworks"></div>
@@ -328,6 +328,14 @@
         $('#errorContainer').html(errorHtml);
         $('#errorModal').modal('show');
     }
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Initialisez les feux d'artifice ici
+        var container = document.getElementById('fireworks');
+        var fireworks = new Fireworks(container, {});
+        fireworks.start();
+    });
 </script>
 <script src="/assets/bootstrap/js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
