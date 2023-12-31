@@ -23,12 +23,8 @@ class AnswerController extends Controller
             'content' => $request->input('content'),
             'status' => true,
         ]);
-
-        // Enregistrer la nouvelle réponse dans la base de données
         $newAnswer->save();
-
-        // Vous pouvez renvoyer une réponse JSON ou toute autre logique nécessaire
-        return response()->json(['success' => true, 'message' => 'Réponse ajoutée avec succès']);
+        return response()->json(['success' => true, 'message' => 'Réponse ajoutée avec succès', 'data' => $newAnswer]);
     }
 
     public function messageAnswers($id)

@@ -91,7 +91,7 @@
                     <div class="comment mt-4 text-justify float-left">
                         <img src="https://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle" width="40" height="40">
                         <h4>${name}</h4>
-                        <span>- ${data.created_at}</span>
+                        <span>- </span>
                         <br>
                         <p>${response}</p>
                     </div>
@@ -103,7 +103,6 @@
             }
         });
     }
-
 </script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
