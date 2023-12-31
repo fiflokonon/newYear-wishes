@@ -27,7 +27,6 @@
     <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Rédiger votre message</button>
 </div>
 <div class="firework"></div>
-<div class="firework"></div>
 {{--  --}}
 <!--<div class="fireworks">
     <div class="firework">
