@@ -28,8 +28,6 @@
 </div>
 <div class="firework"></div>
 <div class="firework"></div>
-<div class="firework"></div>
-
 {{--  --}}
 <!--<div class="fireworks">
     <div class="firework">
