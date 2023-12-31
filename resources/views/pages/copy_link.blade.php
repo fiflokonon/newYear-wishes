@@ -15,7 +15,7 @@ $currentProtocol = request()->secure() ? 'https://' : 'http://';
             color: whitesmoke;
             /*background-image: url("/assets/images/background.jpeg");*/
             background-size: cover;
-            background: linear-gradient(20deg, #202738, #eaeaea, #000000) no-repeat center;
+            background: linear-gradient(50deg, #202738, #795353, #9b2424) no-repeat center;
         }
 
         main {
@@ -35,7 +35,7 @@ $currentProtocol = request()->secure() ? 'https://' : 'http://';
 
         .link-box {
             flex: 1;
-            padding: 15px;
+            padding: 5px;
             color: white;
             border: 1px solid #ced4da;
             border-radius: 4px;
@@ -407,7 +407,7 @@ $currentProtocol = request()->secure() ? 'https://' : 'http://';
     <h1 style="color: red; font-family: Grand Hotel, 'cursive'">Votre message a été enregistré avec succès ! </h1>
     <p> Cliquez sur le bouton <strong>copier</strong> pour copier le lien !</p>
     <p style="color: darkred; font-family: Grand Hotel, 'cursive'; font-size: 20px;"> Partagez-le sur vos réseaux sociaux !</p>
-    <p style="color: greenyellow; font-family: Grand Hotel, 'cursive'; font-size: 20px;">Partagez-le avec vos amis ! </p>
+    <p style="color: green; font-family: Grand Hotel, 'cursive'; font-size: 20px;">Partagez-le avec vos amis ! </p>
     <div class="link-container">
         <div class="link-box" id="linkBox">{{ $currentProtocol }}{{ request()->getHttpHost()  }}/messages/{{ $message->link }}</div>
         <button id="copyLinkButton" onclick="copyToClipboard()">Copier</button>
