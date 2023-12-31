@@ -15,7 +15,7 @@ $currentProtocol = request()->secure() ? 'https://' : 'http://';
             color: whitesmoke;
             /*background-image: url("/assets/images/background.jpeg");*/
             background-size: cover;
-            background: linear-gradient(50deg, #202738, #795353, #9b2424) no-repeat center;
+            background: linear-gradient(65deg, #000000, #9f7f7f) no-repeat center;
         }
 
         main {
