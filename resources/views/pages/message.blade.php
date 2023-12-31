@@ -512,11 +512,13 @@
             font-family: Grand Hotel, 'serif';
         }
 
-        /* Centrer le bouton horizontalement */
-        .center {
+        /* Centrer le bouton horizontalement
+                .center {
             display: flex;
             justify-content: center;
         }
+         */
+
     </style>
 </head>
 <body>
@@ -536,12 +538,12 @@
         </div>
     </section>
 </div>
-<div class="wish" style="color: lime; font-size: 20px;">
-    <p>
-        En cette occasion spéciale du nouvel an 2024, {{$message->name}}  a pensé à vous! Voici son message!
-    </p>
-    <div id="wish">
-        <div style="background-color: #811414; color: whitesmoke; border-radius: 5px; margin: 5px; font-family: Grand Hotel, 'cursive'">
+<div class="wish" style="color: lightslategray; font-size: 15px; font-family: 'Roboto', serif ">
+    <div>
+        En cette occasion spéciale du nouvel an 2024, {{$message->name}} a pensé à vous! Voici son message!
+    </div>
+    <div id="wish" style="margin-top: 10px; margin-bottom: 10px;">
+        <div style="background-color: #811414; color: whitesmoke; border-radius: 5px; margin: 5px; font-family: Grand Hotel, 'cursive'; font-size: 20px;">
             {{ $message->message}}
         </div>
     </div>

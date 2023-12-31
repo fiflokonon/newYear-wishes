@@ -12,12 +12,10 @@ $currentProtocol = request()->secure() ? 'https://' : 'http://';
             font-family: Grand Hotel, 'serif';
             margin: 0;
             padding: 0;
-            background-color: transparent;
             color: whitesmoke;
-            background-image: url("/assets/images/background.jpeg");
+            /*background-image: url("/assets/images/background.jpeg");*/
             background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
+            background: linear-gradient(20deg, #202738, #eaeaea, #000000) no-repeat center;
         }
 
         main {
@@ -37,7 +35,7 @@ $currentProtocol = request()->secure() ? 'https://' : 'http://';
         .link-box {
             flex: 1;
             padding: 5px;
-            color: #a27878;
+            color: white;
             border: 1px solid #ced4da;
             border-radius: 4px;
         }
@@ -403,8 +401,8 @@ $currentProtocol = request()->secure() ? 'https://' : 'http://';
 <main>
     <h1 style="color: red; font-family: Grand Hotel, 'cursive'">Votre message a été enregistré avec succès ! </h1>
     <p> Cliquez sur le bouton <strong>copier</strong> pour copier le lien !</p>
-    <p style="color: darkgray; font-family: Grand Hotel, 'cursive'; font-size: 20px;"> Partagez-le sur vos réseaux sociaux !</p>
-    <p style="color: indianred; font-family: Grand Hotel, 'cursive'; font-size: 20px;">Partagez-le avec vos amis ! </p>
+    <p style="color: darkred; font-family: Grand Hotel, 'cursive'; font-size: 20px;"> Partagez-le sur vos réseaux sociaux !</p>
+    <p style="color: lightgray; font-family: Grand Hotel, 'cursive'; font-size: 20px;">Partagez-le avec vos amis ! </p>
     <div class="link-container">
         <div class="link-box" id="linkBox">{{ $currentProtocol }}{{ request()->getHttpHost()  }}/messages/{{ $message->link }}</div>
         <button id="copyLinkButton" onclick="copyToClipboard()">Copier</button>

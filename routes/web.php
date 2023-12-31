@@ -28,8 +28,8 @@ Route::get('/error-404', function () {
     return view('partials.error-404');
 })->name('not_found');
 
-Route::get('/message', function () {
-    return view('pages.message');
+Route::get('/answers', function () {
+    return view('pages.answers');
 });
 
 Route::get('/messages/{link}', [MessageController::class, 'getMessageByLink'])->name('message');

@@ -11,7 +11,7 @@
     <meta name="author" content="Arnaud Fifonsi">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="MobileOptimized" content="320">
-    <link rel="stylesheet" href="/assets/css/first.css">
+    <link rel="stylesheet" href="/assets/css/new.css">
     <!-- Inclusion locale des fichiers Bootstrap -->
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,20 +20,200 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="bg"></div>
-<main class="new-year-body">
-    <h1 class="new-year">Heureuse Année</h1>
-    <p class="year">2024</p>
-    <p style="font-family: Grand Hotel, 'cursive'">Souhaitez les meilleurs voeux à vos amis et proches en cette occasion spéciale du nouvel an!</p>
-    <button type="button" class="btn-f" data-bs-toggle="modal" data-bs-target="#exampleModal">Rédiger votre message</button>
-</main>
+<h1>BONNE ET HEUREUSE ANNÉE À VOUS !</h1>
+<div class="container-fluid position-relative justify-content-center text-center" style="top: 120px; font-family: Grand Hotel, 'serif'">
+    <p>Envoyez un petit message pour souhaiter les meilleurs voeux à vos amis et proches !</p>
+    <p class="text-success">Faites-leur savoir que vous pensez à eux !</p>
+    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Rédiger votre message</button>
+</div>
+<div class="fireworks">
+    <div class="firework">
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+    </div>
+    <div class="firework" style="margin-top: -70px">
+        <div class="explosion">
+            <div class="spark silver"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark silver"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark silver"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark silver"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark silver"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark silver"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark silver"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark silver"></div>
+        </div>
+    </div>
+    <div class="firework">
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+    </div>
+    <div class="firework" style="margin-top: 70px">
+        <div class="explosion">
+            <div class="spark silver"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark silver"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark silver"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark silver"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark silver"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark silver"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark silver"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark silver"></div>
+        </div>
+    </div>
+    <div class="firework">
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+    </div>
+    <div class="firework" style="margin-top: -70px">
+        <div class="explosion">
+            <div class="spark silver"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark silver"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark silver"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark silver"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark silver"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark silver"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark silver"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark silver"></div>
+        </div>
+    </div>
+    <div class="firework">
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+        <div class="explosion">
+            <div class="spark gold"></div>
+        </div>
+    </div>
+</div>
 <!-- Button trigger modal -->
 <!--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Launch demo modal
 </button>-->
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog bg-dark">
+<div class="modal fade text-dark" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="font-family: Grand Hotel, 'serif'">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Enregistrez votre message </h5>
@@ -65,8 +245,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="submitForm()">Enregistrer</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-success" onclick="submitForm()">Enregistrer</button>
                 </div>
             </form>
         </div>
@@ -125,7 +305,6 @@
         $('#errorModal').modal('show');
     }
 </script>
-<script src="/assets/js/first.js"></script>
 <script src="/assets/bootstrap/js/bootstrap.js"></script>
 </body>
 </html>
