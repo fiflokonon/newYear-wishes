@@ -30,7 +30,7 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-sm-5 col-md-6 col-12 pb-4">
+            <div class="col-sm-5 col-md-6 col-12 pb-4" id="responseList" >
                 <h1>Réponses</h1>
                 @foreach($message->answers as $key => $answer)
                     @if($key % 2 == 0)
@@ -52,20 +52,59 @@
                     <div class="form-group">
                         <h4>Ajouter une réponse</h4>
                         <label for="message">Message</label>
-                        <textarea name="msg" id=""msg cols="30" rows="5" class="form-control" style="background-color: black;"></textarea>
+                        <textarea name="msg" id="response" cols="30" rows="5" class="form-control" style="background-color: black;"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="name">Nom et prénoms</label>
-                        <input type="text" name="name" id="fullname" class="form-control">
+                        <input type="text" name="name" id="name" class="form-control">
                     </div>
                     <div class="form-group">
-                        <button type="button" id="post" class="btn">Envoyer</button>
+                        <button type="button" id="post" onclick="submitResponse({{ $message->id }})" class="btn">Envoyer</button>
                     </div>
                 </form>
+                <!-- Message de succès -->
+                <div id="successMessage" style="display: none; font-family: Grand Hotel, 'serif'">
+                    <p class="text-success">Réponse ajoutée avec succès !</p>
+                    <a href="/" class="btn btn-primary">Créer votre lien</a>
+                </div>
             </div>
         </div>
     </div>
 </section>
+<script>
+    function submitResponse(messageId) {
+        var name = $('#name').val();
+        var response = $('#response').val();
+
+        // Envoyer la requête AJAX au backend
+        $.ajax({
+            type: 'POST',
+            url: '/add-answer',
+            data: {message_id: messageId, name: name, content: response, _token: '{{ csrf_token() }}' },
+            success: function (data) {
+                // Masquer le formulaire, afficher le message de succès
+                $('#algin-form').hide();
+                $('#successMessage').show();
+
+                // Ajouter la nouvelle réponse à la liste existante
+                var newResponse = `
+                    <div class="comment mt-4 text-justify float-left">
+                        <img src="https://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle" width="40" height="40">
+                        <h4>${name}</h4>
+                        <span>- ${data.created_at}</span>
+                        <br>
+                        <p>${response}</p>
+                    </div>
+                `;
+                $('#responseList').append(newResponse);
+            },
+            error: function (error) {
+                console.error('Erreur lors de l\'envoi de la réponse : ', error);
+            }
+        });
+    }
+
+</script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
