@@ -11,13 +11,32 @@
     <meta name="author" content="Arnaud Fifonsi">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="MobileOptimized" content="320">
-    <link rel="stylesheet" href="/assets/css/firework.css">
+    <!--<link rel="stylesheet" href="/assets/css/new.css">-->
     <!-- Inclusion locale des fichiers Bootstrap -->
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background:
+                linear-gradient(#0007, #0000),
+                #123;
+            color: white;
+        }
+        #fireworks {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+    </style>
 </head>
 <body>
 <h1 style="margin-top: 100px; font-family: Lobster, cursive" class="text-center">BONNE ET HEUREUSE ANNÉE À VOUS !</h1>
@@ -26,7 +45,8 @@
     <p class="text-success">Faites-leur savoir que vous pensez à eux !</p>
     <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Rédiger votre message</button>
 </div>
-<div class="firework"></div>
+<!-- Fireworks animation -->
+<div id="fireworks"></div>
 {{--  --}}
 <!--<div class="fireworks">
     <div class="firework">
@@ -310,5 +330,8 @@
     }
 </script>
 <script src="/assets/bootstrap/js/bootstrap.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
